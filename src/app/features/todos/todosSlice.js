@@ -1,8 +1,8 @@
 export function todosReducer (state=[],action) {
     if(action.type === 'todo-add') {
-      return {
+      return [
          //...
-      }
+      ]
     } 
     return state;
   }
