@@ -1,3 +1,5 @@
+import { loadCurrentUser } from "./currentUserAPI";
+
 export function currentUserReducer (state={},action) {                //stexcum en reducer amen slice-i hamar
     if(action.type === 'edit-current-user-name') {
       return {
@@ -27,5 +29,15 @@ export function currentUserReducer (state={},action) {                //stexcum 
           payload:{
             name:newName
           }
+   }
+ }
+
+ //QANI OR loadUser funkcian chi veradarcnum obyekt ayl veradarcnum e funkcia dra hamarel komponentic
+//dispatch aneluc menk kstananq error ev ays xndric xuapleu hamar ogtagorcum en redux-i thunk@
+ export function loadUser () {                          //loadUser-@ actionCreatore vor@ veradarcnume thunk
+   return (dispatch,getState) => {                      //vor@ kanchume asynchron funkciayin ev erb asyncchron
+     return loadCurrentUser().then( (loadedUser) => {   //funkcian qashum e serveric ayd anun@ dispatchenq editName-in
+       dispatch(editName(loadedUser.name))              //ev poxum enq currentUser-in
+     } )                                                //getState-@ veradarcnum e amenaverjin amenatarm state@
    }
  }
